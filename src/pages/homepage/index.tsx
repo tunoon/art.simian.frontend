@@ -6,7 +6,7 @@ import SectionCard from './section-card/index';
 import Quiz from './quiz/index';
 import ValueProp from './value-prop/index';
 import HeroCarousel from './hero-carousel/index';
-import Iconfont from '../../components/icon/index';
+import Iconfont from '../../components/iconfont/index';
 
 export default class Homepage extends Component {
   /**
