@@ -13,7 +13,7 @@ export default class Iconfont extends Component<IProps> {
     return (
       <View
         className={`icon icon-${name}`}
-        style={{ width: `${size}px`, height: `${size}px`, color: 'red' }}
+        style={{ fontSize: `${size}px`, color: '#3e57c3' }}
       />
     );
   }
