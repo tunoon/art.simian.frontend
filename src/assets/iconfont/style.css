@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'simian';
+  src:  url('fonts/simian.eot?ppo5q1');
+  src:  url('fonts/simian.eot?ppo5q1#iefix') format('embedded-opentype'),
+    url('fonts/simian.ttf?ppo5q1') format('truetype'),
+    url('fonts/simian.woff?ppo5q1') format('woff'),
+    url('fonts/simian.svg?ppo5q1#simian') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'simian' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e902";
+}
+.icon-more:before {
+  content: "\e901";
+}
+.icon-cart:before {
+  content: "\e900";
+}

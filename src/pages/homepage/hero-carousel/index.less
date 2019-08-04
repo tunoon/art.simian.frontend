@@ -1,0 +1,43 @@
+@import '../../../common/styles/animate.less';
+.text-focus-in {
+  .text-focus-in();
+}
+
+.text-blur-out {
+  .text-blur-out()
+}
+
+.hero-carousel {
+  .swiper {
+    width: 750px;
+    height: 1242px;
+  }
+  .cover {
+    width: 750px;
+    height: 700px;
+  }
+  .content {
+    width: 100%;
+    padding: 70px 60px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    Text {
+      &:nth-child(1) {
+        font-size: 48px;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      &:nth-child(2) {
+        font-size: 32px;
+        letter-spacing: 1px;
+        color: #171717;
+        margin-bottom: 32px;
+        min-height: 132px;
+      }
+    }
+  }
+}
