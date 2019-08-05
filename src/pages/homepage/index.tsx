@@ -7,6 +7,7 @@ import Quiz from './quiz/index';
 import ValueProp from './value-prop/index';
 import HeroCarousel from './hero-carousel/index';
 import Nav from '../../components/nav/index';
+import ProductCard from '../../components/product-card/index';
 
 export default class Homepage extends Component {
   /**
@@ -33,6 +34,7 @@ export default class Homepage extends Component {
   render() {
     return (
       <ScrollView scrollY style={{ height: '100vh' }}>
+        <ProductCard></ProductCard>
         <Nav></Nav>
         <View className='homepage'>
           <HeroCarousel />
