@@ -5,15 +5,21 @@ import './index.less';
 interface IProps {
   name: string;
   size: number;
+  color?: string;
+  onToggleDrawer?: any;
 }
 
 export default class Iconfont extends Component<IProps> {
+  static defaultProps = {
+    color: '#324eca'
+  };
   render() {
-    const { name, size } = this.props;
+    const { name, size, onToggleDrawer, color } = this.props;
     return (
       <View
         className={`icon icon-${name}`}
-        style={{ fontSize: `${size}px`, color: '#3e57c3' }}
+        style={{ fontSize: `${size}px`, color }}
+        onClick={onToggleDrawer.bind(this, name)}
       />
     );
   }

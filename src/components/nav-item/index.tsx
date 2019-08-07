@@ -4,6 +4,6 @@ import './index.less';
 
 export default class NavItem extends Component {
   render() {
-    return <View className='nav-item'>Get started</View>;
+    return <View className='nav-item'>{this.props.children}</View>;
   }
 }

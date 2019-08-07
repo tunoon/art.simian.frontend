@@ -1,3 +1,31 @@
+@import '../../common/styles/animate.less';
+
+.hidden {
+  .slide-left()
+}
+
+.visible {
+  .slide-right()
+}
+
+
 .drawer {
   width: 750px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+}
+
+.shade {
+  width: 750px;
+  height: 100vh;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  background-color: #000;
+  opacity: 0.3;
 }
