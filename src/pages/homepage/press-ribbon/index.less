@@ -7,4 +7,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  .swiper {
+    width: 750px;
+    height: 160px;
+    .swiper-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .title {
+        width: 240px;
+        text-align: center;
+        font-size: 28px;
+        color: #171717;
+      }
+      .bold {
+        margin-top: 32px;
+        font-weight: bold;
+      }
+    }
+  }
+  .arrow {
+    position: absolute;
+    width: 80px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 80px;
+  }
+  .previous {
+    left: 0;
+  }
+  .next {
+    right: 0;
+  }
 }

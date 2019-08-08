@@ -1,52 +1,19 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { ScrollView, View } from '@tarojs/components';
-import './index.less';
 
+import Drawer from '@components/drawer/index';
+import Iconfont from '@components/iconfont/index';
+import NavList from '@components/nav-list/index';
+import NavHeader from '@components/nav-header/index';
 
-import Drawer from '../../components/drawer/index';
-import Iconfont from '../../components/iconfont/index';
-import Nav from '../../components/nav/index';
-import NavItem from '../../components/nav-item/index';
-
-import SectionCard from './section-card/index';
+import SectionList from './section-list/index';
 import Quiz from './quiz/index';
 import ValueProp from './value-prop/index';
 import HeroCarousel from './hero-carousel/index';
-import PressRibbon from "./press-ribbon/index";
+import PressRibbon from './press-ribbon/index';
+import Principles from './principles/index';
+import './index.less';
 
-const sectionData = [
-  {
-    src:
-      'https://cdn.dynamicyield.com/api/8768435/images/30b424ecb6a9f__sheets_copy_2.jpg',
-    title: 'Shop Sheets'
-  },
-  {
-    src:
-      'https://cdn.dynamicyield.com/api/8768435/images/1f8d69038960c__shop-bestsellers-mobile.jpg',
-    title: 'Shop Best Sellers'
-  },
-  {
-    src:
-      'https://cdn.dynamicyield.com/api/8768435/images/232a5d27d1887__blankets_-_mobile.jpg',
-    title: 'Shop Blankets'
-  }
-];
-const navItems = [
-  'Get started',
-  'Best sellers',
-  'Sheets',
-  'Towels',
-  'Loungewear',
-  'Comforters',
-  'Pillows',
-  'Brooklittles',
-  'Blankets',
-  'Accessories',
-  'Last Call',
-  'About',
-  'My Account',
-  'Search'
-];
 export default class Homepage extends Component {
   config: Config = {
     navigationBarTitleText: '首页'
@@ -68,34 +35,23 @@ export default class Homepage extends Component {
     return (
       <ScrollView scrollY style={{ height: '100vh' }}>
         <View className='homepage'>
-          <Nav>
-            <Iconfont name='cart' size={24} />
-            <Iconfont
-              name='more'
-              size={24}
-              onToggleDrawer={this.handleToggleDrawer}
-            />
-          </Nav>
-          <HeroCarousel />
-          <PressRibbon></PressRibbon>
-          <ValueProp />
-          {sectionData.map(item => (
-            <SectionCard src={item.src} title={item.title} key={item.src} />
-          ))}
-          <Quiz />
           <Drawer status={this.state.drawerStatus}>
-            <Nav>
-              <Iconfont name='cart' size={24} />
-              <Iconfont
-                name='close'
-                size={24}
-                onToggleDrawer={this.handleToggleDrawer}
-              />
-            </Nav>
-            {navItems.map(item => (
-              <NavItem key={item}>{item}</NavItem>
-            ))}
+            <NavHeader>
+              <Iconfont name='cart' />
+              <Iconfont name='close' onToggleDrawer={this.handleToggleDrawer} />
+            </NavHeader>
+            <NavList />
           </Drawer>
+          <NavHeader>
+            <Iconfont name='cart' />
+            <Iconfont name='more' onToggleDrawer={this.handleToggleDrawer} />
+          </NavHeader>
+          <HeroCarousel />
+          <PressRibbon />
+          <ValueProp />
+          <SectionList />
+          <Quiz />
+          <Principles />
         </View>
       </ScrollView>
     );

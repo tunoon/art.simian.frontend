@@ -4,10 +4,6 @@ import './index.less';
 
 export default class Button extends Component {
   render() {
-    return (
-      <View className='button'>
-          {this.props.children}
-      </View>
-    );
+    return <View className='button'>{this.props.children}</View>;
   }
 }

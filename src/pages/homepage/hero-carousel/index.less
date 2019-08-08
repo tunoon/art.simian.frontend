@@ -4,13 +4,18 @@
 }
 
 .text-blur-out {
-  .text-blur-out()
+  .text-blur-out();
 }
 
 .hero-carousel {
+  height: 1200px;
   .swiper {
     width: 750px;
-    height: 1242px;
+    height: 1160px;
+    .swiper-item {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .cover {
     width: 750px;
@@ -25,19 +30,16 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    Text {
-      &:nth-child(1) {
-        font-size: 48px;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-      &:nth-child(2) {
-        font-size: 32px;
-        letter-spacing: 1px;
-        color: #171717;
-        margin-bottom: 32px;
-        min-height: 132px;
-      }
+    .title {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .desc {
+      font-size: 32px;
+      letter-spacing: 1px;
+      color: #171717;
+      margin-bottom: 32px;
     }
   }
 }

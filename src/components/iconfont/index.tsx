@@ -4,14 +4,15 @@ import './index.less';
 
 interface IProps {
   name: string;
-  size: number;
+  size?: number;
   color?: string;
   onToggleDrawer?: any;
 }
 
 export default class Iconfont extends Component<IProps> {
   static defaultProps = {
-    color: '#324eca'
+    color: '#324eca',
+    size: 24
   };
   render() {
     const { name, size, onToggleDrawer, color } = this.props;

@@ -28,13 +28,15 @@ export default class HeroCarousel extends Component {
             <SwiperItem
               key={item.src}
               className={
-                index === this.state.current ? 'text-focus-in' : 'text-blur-out'
+                index === this.state.current
+                  ? 'text-focus-in swiper-item'
+                  : 'text-blur-out swiper-item'
               }
             >
               <Image src={item.src} className='cover' mode='aspectFill' />
               <View className='content'>
-                <Text>{item.title}</Text>
-                <Text>{item.desc}</Text>
+                <Text className='title'>{item.title}</Text>
+                <Text className='desc'>{item.desc}</Text>
                 <Btn>{item.handle}</Btn>
               </View>
               <View />
