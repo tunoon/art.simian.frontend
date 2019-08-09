@@ -1,5 +1,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Swiper, SwiperItem, Image, Text } from '@tarojs/components';
+
+import Indicator from '@components/indicator/index';
+
 import './index.less';
 
 interface IProps {
@@ -49,10 +52,9 @@ export default class principles extends Component<IProps> {
         </Swiper>
         <View className='indicators'>
           {list.map((item, index) => (
-            <View
+            <Indicator
               key={item.title}
-              className='item'
-              style={index === this.state.current ? 'opacity: 1' : ''}
+              isActive={this.state.current === index}
             />
           ))}
         </View>

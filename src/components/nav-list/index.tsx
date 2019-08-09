@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 
-import NavItem from '@components/nav-item';
+import NavItem from './nav-item';
 
 interface IProps {
   list: string[];

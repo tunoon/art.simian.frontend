@@ -6,12 +6,13 @@ import Iconfont from '@components/iconfont/index';
 import NavList from '@components/nav-list/index';
 import NavHeader from '@components/nav-header/index';
 
-import SectionList from './section-list/index';
+import Collections from './collections/index';
 import Quiz from './quiz/index';
 import ValueProp from './value-prop/index';
 import HeroCarousel from './hero-carousel/index';
 import PressRibbon from './press-ribbon/index';
 import Principles from './principles/index';
+import Spotlight from './spotlight/index';
 import './index.less';
 
 export default class Homepage extends Component {
@@ -23,11 +24,11 @@ export default class Homepage extends Component {
     drawerStatus: ''
   };
 
-  handleToggleDrawer = (e: string) => {
-    if (e === 'more') {
+  handleToggleDrawer = (name: string) => {
+    if (name === 'more') {
       return this.setState({ drawerStatus: 'visible' });
     }
-    if (e === 'close') {
+    if (name === 'close') {
       return this.setState({ drawerStatus: 'hidden' });
     }
   };
@@ -49,9 +50,10 @@ export default class Homepage extends Component {
           <HeroCarousel />
           <PressRibbon />
           <ValueProp />
-          <SectionList />
+          <Collections />
           <Quiz />
           <Principles />
+          <Spotlight />
         </View>
       </ScrollView>
     );

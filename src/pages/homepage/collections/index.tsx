@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import SectionCard from './section-card/index';
+import Collection from './collection/index';
 
 interface IProps {
   list: {
@@ -8,7 +8,7 @@ interface IProps {
   }[];
 }
 
-export default class SectionList extends Component<IProps> {
+export default class Collections extends Component<IProps> {
   static defaultProps = {
     list: [
       {
@@ -30,7 +30,7 @@ export default class SectionList extends Component<IProps> {
   };
   render() {
     return this.props.list.map(item => (
-      <SectionCard src={item.src} title={item.title} key={item.src} />
+      <Collection src={item.src} title={item.title} key={item.src} />
     ));
   }
 }

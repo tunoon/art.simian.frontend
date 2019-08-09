@@ -7,11 +7,11 @@ export interface IProps {
   title: string;
 }
 
-export default class SectionCard extends Component<IProps> {
+export default class Collection extends Component<IProps> {
   render() {
     const { src, title } = this.props;
     return (
-      <View className='section-card'>
+      <View className='collection'>
         <Image src={src} className='cover' />
         <View className='title'>{title}</View>
       </View>
