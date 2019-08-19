@@ -89,7 +89,8 @@ const config = {
   },
   alias: {
     '@components': `${SRC_PATH}/components`,
-    '@common': `${SRC_PATH}/common`
+    '@common': `${SRC_PATH}/common`,
+    '@layout': `${SRC_PATH}/layout`
   }
 };
 
