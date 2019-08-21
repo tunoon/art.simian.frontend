@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "art.simian",
   "description": "art.simian wechat mini app",
-  "appid": "touristappid",
+  "appid": "wx0ac36410a05a3c9b",
   "setting": {
     "urlCheck": true,
     "es6": false,

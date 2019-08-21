@@ -5,6 +5,8 @@ import Layout from '@layout/index';
 import Empty from './empty/index';
 import BestSeller from './best-seller/index';
 import Subtotal from './subtotal/index';
+import ProductList from './product-list/index';
+
 import './index.less';
 
 export default class Cart extends Component {
@@ -21,6 +23,7 @@ export default class Cart extends Component {
           </View>
           <View className='subtotal'>
             <Subtotal />
+            <ProductList />
           </View>
         </View>
       </Layout>

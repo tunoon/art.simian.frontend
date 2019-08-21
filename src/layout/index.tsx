@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { ScrollView, View } from '@tarojs/components';
+import { ScrollView } from '@tarojs/components';
 
 import Drawer from '@components/drawer/index';
 import Iconfont from '@components/iconfont/index';
@@ -22,20 +22,18 @@ export default class Layout extends Component {
   render() {
     return (
       <ScrollView scrollY style={{ height: '100vh' }}>
-        <View>
-          <Drawer status={this.state.drawerStatus}>
-            <NavHeader>
-              <Iconfont name='cart' />
-              <Iconfont name='close' onToggleDrawer={this.handleToggleDrawer} />
-            </NavHeader>
-            <NavList />
-          </Drawer>
+        <Drawer status={this.state.drawerStatus}>
           <NavHeader>
             <Iconfont name='cart' />
-            <Iconfont name='more' onToggleDrawer={this.handleToggleDrawer} />
+            <Iconfont name='close' onToggleDrawer={this.handleToggleDrawer} />
           </NavHeader>
-          {this.props.children}
-        </View>
+          <NavList />
+        </Drawer>
+        <NavHeader>
+          <Iconfont name='cart' />
+          <Iconfont name='more' onToggleDrawer={this.handleToggleDrawer} />
+        </NavHeader>
+        {this.props.children}
       </ScrollView>
     );
   }
