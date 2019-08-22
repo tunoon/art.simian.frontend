@@ -1,20 +1,22 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Image, Input } from '@tarojs/components';
-
+import { View, Text, Input } from '@tarojs/components';
 import Iconfont from '@components/iconfont/index';
 
+import Gallery, { IImage } from './gallery/index';
+import Option, { IOption } from './option/index';
 import './index.less';
 
-interface IProps {
+export interface IProps {
   title: string;
   price: string;
-  src: string;
+  images: IImage[];
+  ship?: string;
+  options: IOption[];
 }
 
 export default class ProductCard extends Component<IProps> {
   render() {
-    const { title, price, src } = this.props;
-
+    const { title, price, images, ship, options = [] } = this.props;
     return (
       <View className='product-card'>
         <View className='product'>
@@ -22,11 +24,9 @@ export default class ProductCard extends Component<IProps> {
             <Text className='title'>{title}</Text>
             <Text className='price'>{price}</Text>
           </View>
-          <Image className='image' src={src} />
-          <View className='options'>
-            <View className='switch'></View>
-            <View className='detail'></View>
-          </View>
+          {ship && <View className='ship'>{ship}</View>}
+          <Gallery list={images} />
+          <Option list={options} />
         </View>
         <View className='quality'>
           <Input className='input' />
