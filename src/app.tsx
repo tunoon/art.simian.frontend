@@ -20,9 +20,9 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/cart/index',
-      'pages/homepage/index',
-      'pages/login/index',
+      'pages/cart/views/index',
+      'pages/homepage/views/index',
+      'pages/login/views/index',
       'pages/index/index',
     ],
     window: {

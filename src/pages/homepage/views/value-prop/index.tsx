@@ -14,7 +14,7 @@ export default class ValueProp extends Component {
           sheets and towels at a price that won’t keep you up at night. How do
           we do it? By cutting out the middleman and passing the savings to you.
         </Text>
-        <View style={{marginTop: '48rpx'}}>
+        <View className='button-wrap'>
           <Btn>Find out more</Btn>
         </View>
       </View>
