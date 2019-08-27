@@ -2,9 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { ScrollView } from '@tarojs/components';
 
 import Drawer from '@components/drawer/index';
-import Iconfont from '@components/iconfont/index';
-import NavList from '@components/nav-list/index';
-import NavHeader from '@components/nav-header/index';
+import { Iconfont, NavList, NavHeader } from '@components';
 
 export default class Layout extends Component {
   state = {

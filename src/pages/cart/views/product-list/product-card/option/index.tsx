@@ -31,7 +31,7 @@ export default class Option extends Component<IProps> {
               onClick={this.handleToggleOption.bind(this)}
             >
               <Text className='header'>Item details</Text>
-              <Iconfont name='icaret-down' size={12} />
+              <Iconfont name='caret-down' size={24} />
             </View>
             {this.state.optionIsOpen &&
               list.map(item => (
