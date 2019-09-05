@@ -27,7 +27,7 @@ export default class Login extends Component {
   render() {
     return (
       <View className='login'>
-        <Text>微信登录</Text>
+        <Text className='text'>微信登录</Text>
       </View>
     );
   }
