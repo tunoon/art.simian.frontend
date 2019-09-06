@@ -1,5 +1,4 @@
 import Taro, { Component, Config } from '@tarojs/taro';
-// import { ScrollView, View } from '@tarojs/components';
 
 import Layout from '@layout/index';
 

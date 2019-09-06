@@ -4,7 +4,6 @@ const domain = '';
 
 interface IConfig {
   header?: {};
-  RESTful?: string;
   data?: {};
 }
 
@@ -45,9 +44,8 @@ export class Fetch {
     };
   }
 
-  get = (url: string, config: IConfig = { header: {}, RESTful: '' }) => {
-    const { header = {}, RESTful = {} } = config;
-    url = `${url}/${RESTful}`;
+  get = (url: string, config: IConfig = { header: {} }) => {
+    const { header = {},  } = config;
     return this.request('GET', url, header);
   };
 
@@ -62,9 +60,8 @@ export class Fetch {
     return this.request('POST', url, header, data);
   };
 
-  delete = (url: string, config: IConfig = { header: {}, RESTful: '' }) => {
-    const { header = {}, RESTful = '' } = config;
-    url = `${url}/${RESTful}`;
+  delete = (url: string, config: IConfig = { header: {} }) => {
+    const { header = {} } = config;
     return this.request('DELETE', url, header);
   };
 
@@ -72,16 +69,14 @@ export class Fetch {
     url: string,
     config: IConfig = {
       header: {},
-      RESTful: '',
       data: {}
     }
   ) => {
-    const { header = {}, RESTful = '', data } = config;
-    url = `${url}/${RESTful}`;
+    const { header = {}, data } = config;
     return this.request('POST', url, header, data);
   };
 
-  request(method: Method, url: string, header: {}, data?: {}) {
+  private request(method: Method, url: string, header: {}, data?: {}) {
     return new Promise((resolve, reject) => {
       const options: IOptions = {
         method,

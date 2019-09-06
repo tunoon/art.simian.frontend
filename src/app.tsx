@@ -1,6 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro';
+import { Provider } from '@tarojs/redux';
+import configStore from './store';
 
-import { createClient } from './api/index';
 import Index from './pages/index';
 
 import './app.less';
@@ -10,8 +11,7 @@ import './app.less';
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
-
-const clients = createClient();
+const store = configStore();
 class App extends Component {
   /**
    * 指定config的类型声明为: Taro.Config
@@ -23,7 +23,6 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/my-account/views/index',
-
       'pages/address/views/index',
       'pages/cart/views/index',
       'pages/homepage/views/index',
@@ -49,7 +48,11 @@ class App extends Component {
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render() {
-    return <Index />;
+    return (
+      <Provider store={store}>
+        <Index />
+      </Provider>
+    );
   }
 }
 

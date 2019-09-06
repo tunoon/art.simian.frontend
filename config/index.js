@@ -88,10 +88,12 @@ const config = {
     }
   },
   alias: {
+    '@layout': `${SRC_PATH}/layout`,
+    '@pages': `${SRC_PATH}/pages`,
     '@components': `${SRC_PATH}/components`,
     '@common': `${SRC_PATH}/common`,
-    '@layout': `${SRC_PATH}/layout`,
-    '@helpers': `${SRC_PATH}/common/helpers`,
+    '@library': `${SRC_PATH}/library`,
+    '@store': `${SRC_PATH}/store`
   }
 };
 

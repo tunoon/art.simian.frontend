@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2016",
     "module": "commonjs",
     "removeComments": false,
     "preserveConstEnums": true,
@@ -21,14 +21,18 @@
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types", "global.d.ts"],
     "paths": {
+      "@layout": ["src/layout/index"],
+      "@layout/*": ["src/layout/*"],
+      "@pages": ["src/pages/index"],
+      "@pages/*": ["src/pages/*"],
       "@components": ["src/components/index"],
       "@components/*": ["src/components/*"],
       "@common": ["src/common/index"],
       "@common/*": ["src/common/*"],
-      "@layout": ["src/layout/index"],
-      "@layout/*": ["src/layout/*"],
-      "@helpers": ["src/common/helpers/index"],
-      "@helpers/*": ["src/common/helpers/*"]
+      "@library": ["src/library/index"],
+      "@library/*": ["src/library/*"],
+      "@store": ["src/store/index"],
+      "@store/*": ["src/store/*"]
     }
   },
   "exclude": ["node_modules", "dist"],
