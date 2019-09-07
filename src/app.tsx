@@ -1,7 +1,9 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
-import configStore from './store';
 
+import { authSetting } from '@models/global/auth-setting/actions';
+
+import configStore from './models';
 import Index from './pages/index';
 
 import './app.less';
@@ -37,7 +39,12 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    Taro.getSetting().then(res => {
+      const userInfo: boolean = res.authSetting['scope.userInfo'];
+      store.dispatch(authSetting.start({ userInfo }));
+    });
+  }
 
   componentDidShow() {}
 

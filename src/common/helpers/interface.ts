@@ -1,9 +1,8 @@
-
 import { Action, Reducer } from 'redux';
 import { Epic } from 'redux-observable';
 
-import { createClient } from '../../api';
-import { reducer } from '../../store/reducer';
+import { reducer } from '@models/reducer';
+import { createClient } from '@api';
 
 export type IState = IReducer<typeof reducer>;
 

@@ -13,6 +13,7 @@ import './index.less';
 
 interface IProps {
   login: (params: actions.IParams) => any;
+  authSetting: { [key: string]: boolean };
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -23,8 +24,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 const mapStateToProps = state => {
-  const {} = state;
-  return {};
+  const { authSetting } = state.global;
+  return { authSetting };
 };
 @connect(
   mapStateToProps,
@@ -41,21 +42,27 @@ class MyAccount extends Component<IProps> {
 
   state = {};
   handleLogin = () => {
-    Taro.login().then(res => {
-      const { code } = res;
-      if (code) {
-        this.props.login({ code });
-      }
-    });
+    // Taro.login().then(res => {
+    //   const { code } = res;
+    //   if (code) {
+    //     this.props.login({ code });
+    //   }
+    // });
+    // Taro.getSetting().then(res => {});
   };
   render() {
+    const { authSetting } = this.props;
     return (
       <Layout>
         <View className='my'>
           <Block>
             <View className='title'>用户登录</View>
             <View className='button-wrap' onClick={this.handleLogin}>
-              <Btn>微信一键登录</Btn>
+              {!authSetting.userInfo ? (
+                <Btn openType='getUserInfo'>微信一键登录</Btn>
+              ) : (
+                <Btn>微信一键登录</Btn>
+              )}
             </View>
           </Block>
         </View>

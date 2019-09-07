@@ -3,7 +3,7 @@ import { combineEpics, ofType } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { IEpic } from '@common/helpers';
 
-import * as errorActions from '@store/global/error/actions';
+import * as errorActions from '@models/global/error/actions';
 import * as actions from './actions';
 
 const fetch: IEpic<any> = action$ =>

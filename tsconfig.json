@@ -31,8 +31,10 @@
       "@common/*": ["src/common/*"],
       "@library": ["src/library/index"],
       "@library/*": ["src/library/*"],
-      "@store": ["src/store/index"],
-      "@store/*": ["src/store/*"]
+      "@models": ["src/models/index"],
+      "@models/*": ["src/models/*"],
+      "@api": ["src/api/index"],
+      "@api/*": ["src/api/*"]
     }
   },
   "exclude": ["node_modules", "dist"],

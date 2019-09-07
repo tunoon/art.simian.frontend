@@ -6,6 +6,11 @@ export class User {
     this.request = request;
     this.RESTful = 'api/user';
   }
-  
-  login = () => this.request.get(`${this.RESTful}/login`, {}) as Promise<any>;
+
+  login = (data: { code: string }) => {
+    console.log(data);
+    return this.request.post(`${this.RESTful}/login`, {
+      data
+    }) as Promise<any>;
+  };
 }

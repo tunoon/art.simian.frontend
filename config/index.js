@@ -93,7 +93,8 @@ const config = {
     '@components': `${SRC_PATH}/components`,
     '@common': `${SRC_PATH}/common`,
     '@library': `${SRC_PATH}/library`,
-    '@store': `${SRC_PATH}/store`
+    '@models': `${SRC_PATH}/models`,
+    '@api': `${SRC_PATH}/api`
   }
 };
 

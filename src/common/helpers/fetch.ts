@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-const domain = '';
+const domain = 'http://localhost:3000';
 
 interface IConfig {
   header?: {};
@@ -45,7 +45,7 @@ export class Fetch {
   }
 
   get = (url: string, config: IConfig = { header: {} }) => {
-    const { header = {},  } = config;
+    const { header = {} } = config;
     return this.request('GET', url, header);
   };
 
@@ -78,9 +78,12 @@ export class Fetch {
 
   private request(method: Method, url: string, header: {}, data?: {}) {
     return new Promise((resolve, reject) => {
+      console.log(`${domain}/${url}`);
+      console.log(data);
+
       const options: IOptions = {
         method,
-        url: `${domain}${url}`,
+        url: `${domain}/${url}`,
         header: { ...this.config.header, header },
         data,
         success: ({ statusCode, data }) => {
