@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 
-import { authSetting } from '@models/global/auth-setting/actions';
+import { auth } from '@models/global/auth/actions';
 
 import configStore from './models';
 import Index from './pages/index';
@@ -42,8 +42,15 @@ class App extends Component {
   componentDidMount() {
     Taro.getSetting().then(res => {
       const userInfo: boolean = res.authSetting['scope.userInfo'];
-      store.dispatch(authSetting.start({ userInfo }));
+      store.dispatch(auth.start({ userInfo }));
     });
+    Taro.checkSession()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(res => {
+        console.log(res);
+      });
   }
 
   componentDidShow() {}

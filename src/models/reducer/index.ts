@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
 import { reducer as homepage } from '@pages/homepage/models/reducer';
-import { reducer as authSetting } from '../global/auth-setting/reducer';
+import { reducer as auth } from '../global/auth/reducer';
 
-const global = combineReducers({ authSetting });
+const global = combineReducers({ auth });
 const pages = combineReducers({ homepage });
 
 export const reducer = {

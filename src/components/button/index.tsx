@@ -1,14 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
 import { Button } from '@tarojs/components';
 
-import { connect } from '@tarojs/redux';
-import { compose, Dispatch } from 'redux';
-
-import * as actions from '@models/global/auth-setting/actions';
-
 import './index.less';
 
-type openType =
+type OpenType =
   | 'contact'
   | 'share'
   | 'getUserInfo'
@@ -20,26 +15,21 @@ type openType =
 interface IProps {
   color: string;
   width: number;
-  openType?: openType;
-  updateAuthSetting?: any;
+  openType?: OpenType;
+  onUpdateAuth?: any;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateAuthSetting: compose(
-    dispatch,
-    actions.authSetting.start
-  )
-});
-
-@connect(mapDispatchToProps)
 export default class Btn extends Component<IProps> {
-
   static defaultProps = {
     color: '#324eca',
-    width: 540,
+    width: 540
   };
   onGetUserInfo(e) {
     console.log(e);
+    const { detail } = e;
+    if (Object.keys(detail).length > 1) {
+      this.props.onUpdateAuth();
+    }
   }
   render() {
     const { width, color, openType } = this.props;

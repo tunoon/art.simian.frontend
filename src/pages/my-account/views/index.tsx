@@ -3,29 +3,35 @@ import { Block, View } from '@tarojs/components';
 
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
-
-import * as actions from '../models/actions';
+import { auth } from '@models/global/auth/actions';
 
 import Layout from '@layout/index';
 import { Btn } from '@components';
 
+import { login, IParams } from '../models/actions';
+
 import './index.less';
 
 interface IProps {
-  login: (params: actions.IParams) => any;
-  authSetting: { [key: string]: boolean };
+  auth: { [key: string]: boolean };
+  onLogin: (params: IParams) => any;
+  onUpdateAuth: any;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: compose(
+  onLogin: compose(
     dispatch,
-    actions.login.start
+    login.start
+  ),
+  onUpdateAuth: compose(
+    dispatch,
+    auth.start
   )
 });
 
 const mapStateToProps = state => {
-  const { authSetting } = state.global;
-  return { authSetting };
+  const { auth } = state.global;
+  return { auth };
 };
 @connect(
   mapStateToProps,
@@ -42,28 +48,35 @@ class MyAccount extends Component<IProps> {
 
   state = {};
   handleLogin = () => {
-    // Taro.login().then(res => {
-    //   const { code } = res;
-    //   if (code) {
-    //     this.props.login({ code });
-    //   }
-    // });
+    Taro.login().then(res => {
+      const { code } = res;
+      if (code) {
+        this.props.onLogin({ code });
+      }
+    });
     // Taro.getSetting().then(res => {});
   };
+  onUpdateAuth = () => {
+    this.props.onUpdateAuth({ userInfo: true });
+  };
   render() {
-    const { authSetting } = this.props;
+    const { auth } = this.props;
     return (
       <Layout>
         <View className='my'>
           <Block>
             <View className='title'>用户登录</View>
-            <View className='button-wrap' onClick={this.handleLogin}>
-              {!authSetting.userInfo ? (
-                <Btn openType='getUserInfo'>微信一键登录</Btn>
-              ) : (
-                <Btn>微信一键登录</Btn>
-              )}
-            </View>
+            {auth.userInfo ? (
+              <View onClick={this.handleLogin} className='button-wrap'>
+                <Btn>微信登录</Btn>
+              </View>
+            ) : (
+              <View className='button-wrap'>
+                <Btn openType='getUserInfo' onUpdateAuth={this.onUpdateAuth}>
+                  微信一键登录
+                </Btn>
+              </View>
+            )}
           </Block>
         </View>
       </Layout>
