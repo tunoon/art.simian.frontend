@@ -47,6 +47,7 @@ class MyAccount extends Component<IProps> {
   };
 
   state = {};
+
   handleLogin = () => {
     Taro.login().then(res => {
       const { code } = res;
@@ -54,11 +55,13 @@ class MyAccount extends Component<IProps> {
         this.props.onLogin({ code });
       }
     });
-    // Taro.getSetting().then(res => {});
   };
+
   onUpdateAuth = () => {
     this.props.onUpdateAuth({ userInfo: true });
+    this.handleLogin();
   };
+
   render() {
     const { auth } = this.props;
     return (
@@ -68,7 +71,7 @@ class MyAccount extends Component<IProps> {
             <View className='title'>用户登录</View>
             {auth.userInfo ? (
               <View onClick={this.handleLogin} className='button-wrap'>
-                <Btn>微信登录</Btn>
+                <Btn>微信一键登录</Btn>
               </View>
             ) : (
               <View className='button-wrap'>

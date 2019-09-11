@@ -45,11 +45,11 @@ class App extends Component {
       store.dispatch(auth.start({ userInfo }));
     });
     Taro.checkSession()
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        console.log('Do not need code');
       })
-      .catch(res => {
-        console.log(res);
+      .catch(() => {
+        console.log('Need code to reLogin');
       });
   }
 

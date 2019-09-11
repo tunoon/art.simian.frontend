@@ -1,7 +1,8 @@
+// wechat auth
 import { createAction } from '@library/redux-act';
 import { IState } from './reducer';
 
-const path = 'root';
+const path = 'global/auth';
 
 export const auth = {
   start: createAction(`[${path}] auth.start`).withPayload<IState>(),

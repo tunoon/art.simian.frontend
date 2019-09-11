@@ -1,7 +1,7 @@
 import { createAction } from '@library/redux-act';
 import { IState } from './reducer';
 
-const path = 'root';
+const path = 'global/login';
 
 export const login = {
   start: createAction(`[${path}] login.start`).withPayload<IState>(),

@@ -15,10 +15,11 @@ export const reducer = createReducer(state);
 
 reducer.on(actions.auth.done, (state, payload) =>
   produce(state, draft => {
-    console.log(payload);
-    
     const keys = Object.keys(payload);
     keys.map(key => {
+      if (!payload[key]) {
+        return;
+      }
       draft[key] = payload[key];
     });
   })

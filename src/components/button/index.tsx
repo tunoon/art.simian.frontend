@@ -25,7 +25,6 @@ export default class Btn extends Component<IProps> {
     width: 540
   };
   onGetUserInfo(e) {
-    console.log(e);
     const { detail } = e;
     if (Object.keys(detail).length > 1) {
       this.props.onUpdateAuth();
