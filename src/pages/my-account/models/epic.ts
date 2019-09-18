@@ -11,10 +11,10 @@ const login: IEpic<any> = (action$, state$, { api }) =>
     ofType(actions.login.start.type),
     switchMap(action => {
       console.log(action.payload);
-      return from(api.user.login({ code: action.payload.code })).pipe(
+      return from(api.user.login({ ...action.payload })).pipe(
         mergeMap(response => {
           console.log(response);
-          
+
           return of(actions.login.done(response));
         })
       );

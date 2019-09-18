@@ -52,7 +52,10 @@ class MyAccount extends Component<IProps> {
     Taro.login().then(res => {
       const { code } = res;
       if (code) {
-        this.props.onLogin({ code });
+        Taro.getUserInfo().then(res => {
+          const { encryptedData, iv, signature } = res;
+          this.props.onLogin({ code, encryptedData, iv, signature });
+        });
       }
     });
   };
