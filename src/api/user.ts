@@ -8,7 +8,6 @@ export class User {
   }
 
   login = (data: { code: string }) => {
-    console.log(data);
     return this.request.post(`${this.RESTful}/login`, {
       data
     }) as Promise<any>;

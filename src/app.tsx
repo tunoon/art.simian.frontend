@@ -46,6 +46,7 @@ class App extends Component {
     });
     Taro.checkSession()
       .then(() => {
+        
         console.log('Do not need code');
       })
       .catch(() => {

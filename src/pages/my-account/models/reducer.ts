@@ -3,15 +3,19 @@ import produce from 'immer';
 
 import * as actions from './actions';
 
-const state: any = {};
+export interface IState {
+  isLogined: boolean;
+  token: string;
+}
+
+const state: IState = {
+  isLogined: false,
+  token: ''
+};
 
 export const reducer = createReducer(state);
 
-reducer.on(actions.login.start, state =>
-  produce(state, draft => {
-    draft.loading = true;
-  })
-);
+// reducer.on(actions.login.start, state => produce(state, draft => {}));
 
 reducer.on(actions.login.done, (state, payload) => produce(state, draft => {}));
 

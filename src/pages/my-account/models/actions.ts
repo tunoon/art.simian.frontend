@@ -5,9 +5,11 @@ const path = 'my-account';
 
 export interface IParams {
   code: string;
-  encryptedData?: string;
-  iv?: string;
-  signature?: string;
+  userInfo: {
+    avatarUrl: string;
+    gender: string;
+    nickName: string;
+  };
 }
 
 export const login = {

@@ -4,10 +4,14 @@ import produce from 'immer';
 import * as actions from './actions';
 
 export interface IState {
-  [key: string]: boolean;
+  isLogined: boolean;
+  token: string;
 }
 
-const state: IState = {};
+const state: IState = {
+  isLogined: false,
+  token: ''
+};
 
 export const reducer = createReducer(state);
 
@@ -15,11 +19,15 @@ export const reducer = createReducer(state);
 
 reducer.on(actions.login.done, (state, payload) =>
   produce(state, draft => {
-    const keys = Object.keys(payload);
-    keys.map(key => {
-      draft[key] = payload[key];
-    });
+    console.log(payload);
+    draft.isLogined = true;
+    draft.token = payload.token;
   })
 );
 
-// reducer.on(actions.login.error, state => produce(state, draft => {}));
+reducer.on(actions.login.error, state =>
+  produce(state, draft => {
+    draft.isLogined = false;
+    draft.token = '';
+  })
+);

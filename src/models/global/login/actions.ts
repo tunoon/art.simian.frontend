@@ -3,8 +3,17 @@ import { IState } from './reducer';
 
 const path = 'global/login';
 
+export interface IParams {
+  code: string;
+  userInfo: {
+    avatarUrl: string;
+    gender: string;
+    nickName: string;
+  };
+}
+
 export const login = {
-  start: createAction(`[${path}] login.start`).withPayload<IState>(),
-  done: createAction(`[${path}] login.done`).withPayload<IState>(),
+  start: createAction(`[${path}] login.start`).withPayload<IParams>(),
+  done: createAction(`[${path}] login.done`).withPayload<any>(),
   error: createAction(`[${path}] login.error`)
 };

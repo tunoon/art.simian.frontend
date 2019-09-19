@@ -78,9 +78,6 @@ export class Fetch {
 
   private request(method: Method, url: string, header: {}, data?: {}) {
     return new Promise((resolve, reject) => {
-      console.log(`${domain}/${url}`);
-      console.log(data);
-
       const options: IOptions = {
         method,
         url: `${domain}/${url}`,
