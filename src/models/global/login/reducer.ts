@@ -1,3 +1,5 @@
+import Taro from '@tarojs/taro';
+
 import { createReducer } from '@library/redux-act';
 import produce from 'immer';
 
@@ -15,11 +17,30 @@ const state: IState = {
 
 export const reducer = createReducer(state);
 
-// reducer.on(actions.login.start, state => produce(state, draft => {}));
+reducer.on(actions.login.init, state =>
+  produce(state, draft => {
+    try {
+      const value = Taro.getStorageSync('[global.login]');
+      if (value) {
+        draft.isLogined = value.isLogined;
+        draft.token = value.token;
+      }
+    } catch (e) {
+      console.log(e);
+      // Do something when catch error
+    }
+  })
+);
 
 reducer.on(actions.login.done, (state, payload) =>
   produce(state, draft => {
-    console.log(payload);
+    try {
+      Taro.setStorageSync('[global.login]', {
+        isLogined: true,
+        token: payload.token
+      });
+    } catch (e) {}
+
     draft.isLogined = true;
     draft.token = payload.token;
   })
