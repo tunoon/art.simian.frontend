@@ -34,15 +34,17 @@ reducer.on(actions.login.init, state =>
 
 reducer.on(actions.login.done, (state, payload) =>
   produce(state, draft => {
-    try {
-      Taro.setStorageSync('[global.login]', {
-        isLogined: true,
-        token: payload.token
-      });
-    } catch (e) {}
-
-    draft.isLogined = true;
-    draft.token = payload.token;
+    const { token } = payload;
+    if (token) {
+      try {
+        Taro.setStorageSync('[global.login]', {
+          isLogined: true,
+          token
+        });
+      } catch (e) {}
+      draft.isLogined = true;
+      draft.token = token;
+    }
   })
 );
 

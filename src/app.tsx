@@ -26,6 +26,7 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/my-account/views/index',
+
       'pages/address/views/index',
       'pages/cart/views/index',
       'pages/homepage/views/index',
@@ -46,17 +47,15 @@ class App extends Component {
     });
     Taro.checkSession()
       .then(() => {
-        console.log('Do not need code');
         store.dispatch(login.init());
       })
       .catch(() => {
-        console.log('Need code to reLogin');
         Taro.login().then(res => {
           const { code } = res;
           if (code) {
             Taro.getUserInfo().then(res => {
-              const { userInfo } = res;
-              store.dispatch(login.start({ code, userInfo }));
+              const { encryptedData, iv } = res;
+              store.dispatch(login.start({ code, encryptedData, iv }));
             });
           }
         });

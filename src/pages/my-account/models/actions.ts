@@ -5,11 +5,8 @@ const path = 'my-account';
 
 export interface IParams {
   code: string;
-  userInfo: {
-    avatarUrl: string;
-    gender: string;
-    nickName: string;
-  };
+  encryptedData: string;
+  iv: string;
 }
 
 export const login = {

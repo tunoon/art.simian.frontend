@@ -1,14 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
 import { Block, View } from '@tarojs/components';
-
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
 import { auth } from '@models/global/auth/actions';
-
 import Layout from '@layout/index';
 import { Btn } from '@components';
-
-// import { login, IParams } from '../models/actions';
 import { login, IParams } from '@models/global/login/actions';
 
 import './index.less';
@@ -57,8 +53,8 @@ class MyAccount extends Component<IProps> {
       const { code } = res;
       if (code) {
         Taro.getUserInfo().then(res => {
-          const { userInfo } = res;
-          this.props.onLogin({ code, userInfo });
+          const { encryptedData, iv } = res;
+          this.props.onLogin({ code, encryptedData, iv });
         });
       }
     });
@@ -77,7 +73,7 @@ class MyAccount extends Component<IProps> {
           <Block>
             <View className='title'>用户登录</View>
             {login.isLogined ? (
-              <View className='button-wrap'>
+              <View onClick={this.handleLogin} className='button-wrap'>
                 <Btn>已登录</Btn>
               </View>
             ) : auth.userInfo ? (

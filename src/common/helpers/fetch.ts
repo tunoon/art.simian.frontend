@@ -2,6 +2,18 @@ import Taro from '@tarojs/taro';
 
 const domain = 'http://localhost:3000';
 
+const setAuthorization = () => {
+  try {
+    const value = Taro.getStorageSync('[global.login]');
+    if (value) {
+      return `Bearer ${value.token}`;
+    }
+  } catch (e) {
+    console.log(e);
+    // Do something when catch error
+  }
+};
+
 interface IConfig {
   header?: {};
   data?: {};
@@ -81,7 +93,11 @@ export class Fetch {
       const options: IOptions = {
         method,
         url: `${domain}/${url}`,
-        header: { ...this.config.header, header },
+        header: {
+          ...this.config.header,
+          Authorization: setAuthorization(),
+          header
+        },
         data,
         success: ({ statusCode, data }) => {
           if (statusCode < 400 && statusCode >= 200) {
