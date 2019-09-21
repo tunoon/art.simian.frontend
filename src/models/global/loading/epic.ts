@@ -1,5 +1,6 @@
-import * as errorActions from '@iherb-containers/error/actions';
-import { IEpic } from '@iherb-helpers';
+import Taro from '@tarojs/taro';
+import * as errorActions from '@models/global/error/actions';
+import { IEpic } from '@common/helpers';
 import { combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { catchError, concat, filter, map } from 'rxjs/operators';
@@ -10,10 +11,13 @@ const open: IEpic<any> = action$ =>
   action$.pipe(
     filter(action => action.type && action.type.endsWith('load.start')),
     map(action => {
-      wx.showNavigationBarLoading();
+      Taro.showNavigationBarLoading();
       return loading.open(action.type.replace('load.start', '').trim());
     }),
-    catchError((e, source$) => of(errorActions.capture(e)).pipe(concat(source$))));
+    catchError((e, source$) =>
+      of(errorActions.capture(e)).pipe(concat(source$))
+    )
+  );
 
 const close: IEpic<any> = action$ =>
   action$.pipe(
@@ -24,7 +28,7 @@ const close: IEpic<any> = action$ =>
           action.type.endsWith('load.error'))
     ),
     map(action => {
-      wx.hideNavigationBarLoading();
+      Taro.hideNavigationBarLoading();
       return loading.close(
         action.type
           .replace('load.done', '')
@@ -32,6 +36,9 @@ const close: IEpic<any> = action$ =>
           .trim()
       );
     }),
-    catchError((e, source$) => of(errorActions.capture(e)).pipe(concat(source$))));
+    catchError((e, source$) =>
+      of(errorActions.capture(e)).pipe(concat(source$))
+    )
+  );
 
 export const epic = combineEpics(open, close);

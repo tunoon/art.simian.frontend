@@ -16,6 +16,7 @@ interface IProps {
   color: string;
   width: number;
   openType?: OpenType;
+  formType?: 'submit' | 'reset';
   onUpdateAuth?: any;
 }
 
@@ -31,7 +32,7 @@ export default class Btn extends Component<IProps> {
     }
   }
   render() {
-    const { width, color, openType } = this.props;
+    const { width, color, openType, formType } = this.props;
 
     return (
       <Button
@@ -39,6 +40,7 @@ export default class Btn extends Component<IProps> {
         className='button'
         hoverClass='hover'
         openType={openType}
+        formType={formType}
         onGetUserInfo={this.onGetUserInfo}
       >
         {this.props.children}

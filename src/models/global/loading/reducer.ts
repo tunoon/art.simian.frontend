@@ -1,4 +1,4 @@
-import { createReducer } from '@iherb-library/redux-act';
+import { createReducer } from '@library/redux-act';
 import produce from 'immer';
 
 import * as actions from './actions';
