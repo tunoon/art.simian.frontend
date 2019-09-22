@@ -85,7 +85,7 @@ export class Fetch {
     }
   ) => {
     const { header = {}, data } = config;
-    return this.request('POST', url, header, data);
+    return this.request('PUT', url, header, data);
   };
 
   private request(method: Method, url: string, header: {}, data?: {}) {

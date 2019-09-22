@@ -7,8 +7,9 @@ import './index.less';
 
 interface IProps {
   address: IAddress;
-  onEditAddress: any;
+  onCreateAddress: any;
   onDeleteAddress: any;
+  onUpdateAddress: any;
 }
 
 export default class Address extends Component<IProps> {
@@ -18,17 +19,6 @@ export default class Address extends Component<IProps> {
   handleToggleOpenEdit() {
     const { isOpenEdit } = this.state;
     this.setState({ isOpenEdit: !isOpenEdit });
-  }
-  handleDeleteAddress() {
-    Taro.showModal({
-      title: '提示',
-      content: '确定删除当前地址吗？',
-      confirmColor: '#2b8df2'
-    }).then(res => {
-      if (res.confirm) {
-        console.log('删除地址');
-      }
-    });
   }
   render() {
     const { address } = this.props;
@@ -54,7 +44,8 @@ export default class Address extends Component<IProps> {
         {this.state.isOpenEdit && (
           <Edit
             onToggleOpenEdit={this.handleToggleOpenEdit}
-            onEditAddress={this.props.onEditAddress}
+            onCreateAddress={this.props.onCreateAddress}
+            onUpdateAddress={this.props.onUpdateAddress}
             address={address}
           />
         )}

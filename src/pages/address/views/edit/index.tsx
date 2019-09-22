@@ -21,7 +21,8 @@ interface IRegion {
 interface IProps {
   address: IAddress;
   onToggleOpenEdit: any;
-  onEditAddress: any;
+  onCreateAddress: any;
+  onUpdateAddress?: any;
 }
 
 export default class Edit extends Component<IProps> {
@@ -40,7 +41,7 @@ export default class Edit extends Component<IProps> {
       isDefault: false
     },
     onToggleOpenEdit: () => {},
-    onEditAddress: () => {}
+    onCreateAddress: () => {}
   };
 
   componentDidMount() {
@@ -95,8 +96,10 @@ export default class Edit extends Component<IProps> {
 
     if (addressId) {
       address.id = addressId;
+      this.props.onUpdateAddress(address);
+    } else {
+      this.props.onCreateAddress(address);
     }
-    this.props.onEditAddress(address);
   };
 
   render() {

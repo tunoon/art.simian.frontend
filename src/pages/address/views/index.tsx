@@ -11,15 +11,20 @@ import { IAddress } from '../interface';
 import Header from './header/index';
 import Address from './address/index';
 import Edit from './edit/index';
+
 import { load } from '../models/list/actions';
-import { edit } from '../models/edit/actions';
+import { create } from '../models/create/actions';
+import { update } from '../models/update/actions';
+import { omit } from '../models/omit/actions';
 
 import './index.less';
 
 interface IProps {
   list: IAddress[];
   onGetAddressList: any;
-  onEditAddress: any;
+  onCreateAddress: any;
+  onUpdateAddress: any;
+  onDeleteAddress: any;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -27,14 +32,22 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch,
     load.start
   ),
-  onEditAddress: compose(
+  onCreateAddress: compose(
     dispatch,
-    edit.start
+    create.start
+  ),
+  onUpdateAddress: compose(
+    dispatch,
+    update.start
+  ),
+  onDeleteAddress: compose(
+    dispatch,
+    omit.start
   )
 });
 
 const mapStateToProps = state => {
-  const list = state.pages.address.list.data;
+  const list = state.pages.address.list;
   return { list };
 };
 
@@ -57,8 +70,11 @@ export default class AddressList extends Component<IProps> {
     const { isOpenEdit } = this.state;
     this.setState({ isOpenEdit: !isOpenEdit });
   }
-  handleEditAddress(address: IAddress) {
-    this.props.onEditAddress(address);
+  handleCreateAddress(address: IAddress) {
+    this.props.onCreateAddress(address);
+  }
+  handleUpdateAddress(address: IAddress) {
+    this.props.onUpdateAddress(address);
   }
   handleDeleteAddress(id: string) {
     if (!id) {
@@ -74,7 +90,7 @@ export default class AddressList extends Component<IProps> {
       confirmColor: '#2b8df2'
     }).then(res => {
       if (res.confirm) {
-        console.log(id);
+        this.props.onDeleteAddress({ id });
       }
     });
   }
@@ -87,7 +103,8 @@ export default class AddressList extends Component<IProps> {
             <Address
               address={address}
               key={address.id}
-              onEditAddress={this.handleEditAddress}
+              onCreateAddress={this.handleCreateAddress}
+              onUpdateAddress={this.handleUpdateAddress}
               onDeleteAddress={this.handleDeleteAddress}
             ></Address>
           ))}
@@ -99,7 +116,7 @@ export default class AddressList extends Component<IProps> {
           {this.state.isOpenEdit && (
             <Edit
               onToggleOpenEdit={this.handleToggleOpenEdit}
-              onEditAddress={this.handleEditAddress}
+              onCreateAddress={this.handleCreateAddress}
             ></Edit>
           )}
         </View>

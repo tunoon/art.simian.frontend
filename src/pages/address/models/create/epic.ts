@@ -5,21 +5,21 @@ import { IEpic } from '@common/helpers';
 
 import * as errorActions from '@models/global/error/actions';
 import * as actions from './actions';
+import { load } from '../list/actions';
 
-const edit: IEpic<any> = (action$, state$, { api }) =>
+const create: IEpic<any> = (action$, state$, { api }) =>
   action$.pipe(
-    ofType(actions.edit.start.type),
+    ofType(actions.create.start.type),
     switchMap(action => {
-      console.log(action.payload);
       return from(api.address.createAddress(action.payload)).pipe(
-        mergeMap(response => of(actions.edit.done(response)))
+        mergeMap(() => of(actions.create.done(), load.start()))
       );
     }),
     catchError((e, source$) => {
-      return of(actions.edit.error(), errorActions.capture(e)).pipe(
+      return of(actions.create.error(), errorActions.capture(e)).pipe(
         concat(source$)
       );
     })
   );
 
-export const epic = combineEpics(edit);
+export const epic = combineEpics(create);
