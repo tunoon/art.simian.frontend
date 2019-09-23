@@ -10,8 +10,7 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'prefer-template': 'error',
     'import/prefer-default-export': 'off',
-    'import/order': 'error',
-    // 'import/no-default-export': ['error', 'camel-case'],
+    'import/order': 'error'
   },
   parser: 'babel-eslint',
   plugins: ['typescript']

@@ -1,14 +1,14 @@
 export class User {
   request: any;
-  RESTful: string;
+  prefix: string;
 
   constructor(request: any) {
     this.request = request;
-    this.RESTful = 'api/user';
+    this.prefix = 'api/user';
   }
 
   login = (data: { code: string }) => {
-    return this.request.post(`${this.RESTful}/login`, {
+    return this.request.post(`${this.prefix}/login`, {
       data
     }) as Promise<any>;
   };
