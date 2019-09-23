@@ -40,6 +40,7 @@ export default class Address extends Component<IProps> {
           >
             删除
           </Text>
+          <View></View>
         </View>
         {this.state.isOpenEdit && (
           <Edit

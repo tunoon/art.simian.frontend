@@ -6,7 +6,12 @@ module.exports = {
       1,
       { extensions: ['.js', '.jsx', '.tsx'] }
     ],
-    quotes: [0, 'single']
+    quotes: ['error', 'single'],
+    'arrow-body-style': ['error', 'as-needed'],
+    'prefer-template': 'error',
+    'import/prefer-default-export': 'off',
+    'import/order': 'error',
+    // 'import/no-default-export': ['error', 'camel-case'],
   },
   parser: 'babel-eslint',
   plugins: ['typescript']

@@ -98,7 +98,7 @@ export default class AddressList extends Component<IProps> {
     return (
       <Layout>
         <View className='address-list'>
-          <Header></Header>
+          <Header />
           {this.props.list.map(address => (
             <Address
               address={address}
@@ -106,7 +106,7 @@ export default class AddressList extends Component<IProps> {
               onCreateAddress={this.handleCreateAddress}
               onUpdateAddress={this.handleUpdateAddress}
               onDeleteAddress={this.handleDeleteAddress}
-            ></Address>
+            />
           ))}
           <View className='button-wrap' onClick={this.handleToggleOpenEdit}>
             <Btn color='#2b8df2' width={480}>
@@ -117,7 +117,7 @@ export default class AddressList extends Component<IProps> {
             <Edit
               onToggleOpenEdit={this.handleToggleOpenEdit}
               onCreateAddress={this.handleCreateAddress}
-            ></Edit>
+            />
           )}
         </View>
       </Layout>
