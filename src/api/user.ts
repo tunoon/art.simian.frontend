@@ -1,14 +1,14 @@
 export class User {
   request: any;
-  Prefix: string;
+  prefix: string;
 
   constructor(request: any) {
     this.request = request;
-    this.Prefix = 'api/user';
+    this.prefix = 'api/user';
   }
 
   login = (data: { code: string }) =>
-    this.request.post(`${this.Prefix}/login`, {
+    this.request.post(`${this.prefix}/login`, {
       data
     }) as Promise<any>;
 }
