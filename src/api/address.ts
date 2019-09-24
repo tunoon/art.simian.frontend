@@ -11,28 +11,28 @@ interface IAddress {
 
 export class Address {
   request: any;
-  Prefix: string;
+  prefix: string;
 
   constructor(request: any) {
     this.request = request;
-    this.Prefix = 'api/address';
+    this.prefix = 'api/address';
   }
 
   getAddressList = () =>
-    this.request.get(`${this.Prefix}/all`, {}) as Promise<any>;
+    this.request.get(`${this.prefix}/all`, {}) as Promise<any>;
 
   createAddress = (params: IAddress) =>
-    this.request.post(`${this.Prefix}/create`, {
+    this.request.post(`${this.prefix}/create`, {
       data: params
     }) as Promise<any>;
 
   updateAddress = (params: IAddress) => {
     const { id, ...rest } = params;
-    return this.request.put(`${this.Prefix}/update/${id}`, {
+    return this.request.put(`${this.prefix}/update/${id}`, {
       data: rest
     }) as Promise<any>;
   };
 
   deleteAddress = (params: { id: string }) =>
-    this.request.delete(`${this.Prefix}/delete/${params.id}`) as Promise<any>;
+    this.request.delete(`${this.prefix}/delete/${params.id}`) as Promise<any>;
 }
