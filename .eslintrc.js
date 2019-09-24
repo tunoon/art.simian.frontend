@@ -11,8 +11,12 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': ['error', { varsIgnorePattern: 'Taro' }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { varsIgnorePattern: 'Taro' }
+    ],
     'react/jsx-filename-extension': [
-      1,
+      'warn',
       { extensions: ['.js', '.jsx', '.tsx'] }
     ],
     quotes: ['error', 'single'],
