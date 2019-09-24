@@ -3,7 +3,6 @@ import { IAddress } from '../../interface';
 
 const path = 'pages/address/list';
 
-
 export const load = {
   start: createAction(`[${path}] load.start`),
   done: createAction(`[${path}] load.done`).withPayload<IAddress[]>(),

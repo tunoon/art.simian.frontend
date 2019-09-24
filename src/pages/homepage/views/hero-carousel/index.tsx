@@ -1,8 +1,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
-import Btn from '@components/button';
-
 import list from './data';
+import { Btn } from '@components';
+
 import './index.less';
 
 export default class HeroCarousel extends Component {

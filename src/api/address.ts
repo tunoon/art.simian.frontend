@@ -11,32 +11,28 @@ interface IAddress {
 
 export class Address {
   request: any;
-  RESTful: string;
+  Prefix: string;
 
   constructor(request: any) {
     this.request = request;
-    this.RESTful = 'api/address';
+    this.Prefix = 'api/address';
   }
 
   getAddressList = () =>
-    this.request.get(`${this.RESTful}/all`, {}) as Promise<any>;
+    this.request.get(`${this.Prefix}/all`, {}) as Promise<any>;
 
-  createAddress = (params: IAddress) => {
-    return this.request.post(`${this.RESTful}/create`, {
+  createAddress = (params: IAddress) =>
+    this.request.post(`${this.Prefix}/create`, {
       data: params
     }) as Promise<any>;
-  };
 
   updateAddress = (params: IAddress) => {
     const { id, ...rest } = params;
-    return this.request.put(`${this.RESTful}/update/${id}`, {
+    return this.request.put(`${this.Prefix}/update/${id}`, {
       data: rest
     }) as Promise<any>;
   };
 
-  deleteAddress = (params: { id: string }) => {
-    return this.request.delete(
-      `${this.RESTful}/delete/${params.id}`
-    ) as Promise<any>;
-  };
+  deleteAddress = (params: { id: string }) =>
+    this.request.delete(`${this.Prefix}/delete/${params.id}`) as Promise<any>;
 }

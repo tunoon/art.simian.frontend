@@ -1,8 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Swiper, SwiperItem, Image, Text } from '@tarojs/components';
-
-import Indicator from '@components/indicator/index';
-
+import { Indicator } from '@components';
 import './index.less';
 
 interface IProps {
@@ -13,7 +11,7 @@ interface IProps {
   }[];
 }
 
-export default class principles extends Component<IProps> {
+export default class Principles extends Component<IProps> {
   static defaultProps = {
     list: [
       {

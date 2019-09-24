@@ -1,5 +1,4 @@
 import { createAction } from '@library/redux-act';
-import { IState } from './reducer';
 
 const path = 'global/login';
 

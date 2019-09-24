@@ -14,14 +14,17 @@ export interface Action<T extends string> extends Type<T> {}
 
 export interface ActionWithPayload<T extends string, P extends any>
   extends Type<T>,
-  Payload<P> {}
+    Payload<P> {}
 
-export interface ActionWithMeta<T extends string, M extends any> extends Type<T>, Meta<M> {}
-
-export interface ActionWithPayloadAndMeta<T extends string, P extends any, M extends any>
+export interface ActionWithMeta<T extends string, M extends any>
   extends Type<T>,
-  Payload<P>,
-  Meta<M> {}
+    Meta<M> {}
+
+export interface ActionWithPayloadAndMeta<
+  T extends string,
+  P extends any,
+  M extends any
+> extends Type<T>, Payload<P>, Meta<M> {}
 
 export interface ActionCreator<T extends string> extends Type<T> {
   withPayload: <P>() => ActionWithPayloadCreator<T, P>;
@@ -30,7 +33,8 @@ export interface ActionCreator<T extends string> extends Type<T> {
   (): Action<T>;
 }
 
-export interface ActionWithPayloadCreator<T extends string, P extends any> extends Type<T> {
+export interface ActionWithPayloadCreator<T extends string, P extends any>
+  extends Type<T> {
   withMeta: <M>(
     reducer: MetaReducer<M>
   ) => ActionWithPayloadAndMetaCreator<T, P, M>;
@@ -38,12 +42,16 @@ export interface ActionWithPayloadCreator<T extends string, P extends any> exten
   (payload: P): ActionWithPayload<T, P>;
 }
 
-export interface ActionWithMetaCreator<T extends string, M extends any> extends Type<T> {
+export interface ActionWithMetaCreator<T extends string, M extends any>
+  extends Type<T> {
   (): ActionWithMeta<T, M>;
 }
 
-export interface ActionWithPayloadAndMetaCreator<T extends string, P extends any, M extends any>
-  extends Type<T> {
+export interface ActionWithPayloadAndMetaCreator<
+  T extends string,
+  P extends any,
+  M extends any
+> extends Type<T> {
   (payload: P): ActionWithPayloadAndMeta<T, P, M>;
 }
 
@@ -51,7 +59,11 @@ export interface MetaReducer<M extends any> {
   <P>(payload: P): M;
 }
 
-const createActionWithPayloadAndMeta = <T extends string, P extends any, M extends any>(
+const createActionWithPayloadAndMeta = <
+  T extends string,
+  P extends any,
+  M extends any
+>(
   type: T,
   reducer: MetaReducer<M>
 ): ActionWithPayloadAndMetaCreator<T, P, M> => {

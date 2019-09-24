@@ -9,12 +9,14 @@ import * as actions from './actions';
 const create: IEpic<any> = (action$, state$, { api }) =>
   action$.pipe(
     ofType(actions.create.start.type),
-    switchMap(action => from(api.address.createAddress(action.payload)).pipe(
+    switchMap(action =>
+      from(api.address.createAddress(action.payload)).pipe(
         mergeMap(() => of(actions.create.done(), load.start()))
-      )),
-    catchError((e, source$) => of(actions.create.error(), errorActions.capture(e)).pipe(
-        concat(source$)
-      ))
+      )
+    ),
+    catchError((e, source$) =>
+      of(actions.create.error(), errorActions.capture(e)).pipe(concat(source$))
+    )
   );
 
 export const epic = combineEpics(create);

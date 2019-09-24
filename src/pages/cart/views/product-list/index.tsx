@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
 import ProductCard, { IProps as IProduct } from './product-card/index';
 
 import './index.less';

@@ -1,6 +1,5 @@
 import { createReducer } from '@library/redux-act';
 import produce from 'immer';
-
 import * as actions from './actions';
 
 export interface ITracking {

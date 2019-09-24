@@ -35,9 +35,15 @@ interface IOptions {
   data?: {};
   header?: {};
   method: Method;
-  success: any;
-  fail: any;
-  complete: any;
+  success: ({ statusCode, data }: { statusCode: number; data: object }) => void;
+  fail: ({
+    statusCode,
+    errMsg: string
+  }: {
+    statusCode: number;
+    errMsg: string;
+  }) => void;
+  complete: () => void;
 }
 
 export class Fetch {

@@ -1,6 +1,4 @@
-
 import { Fetch } from '@common/helpers/fetch';
-
 import { User } from './user';
 import { Address } from './address';
 

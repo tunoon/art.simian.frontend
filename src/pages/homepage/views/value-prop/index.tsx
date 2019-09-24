@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import Btn from '@components/button';
+import { Btn } from '@components';
 
 import './index.less';
 

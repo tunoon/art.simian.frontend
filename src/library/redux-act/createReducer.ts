@@ -57,9 +57,9 @@ export const createReducer = <S extends any>(initialState: S): Reducer<S> => {
 
   const on = <T extends string, P, M>(
     action:
-    | ActionWithMetaCreator<T, M>
-    | Action<T>
-    | ActionWithPayloadCreator<T, P>,
+      | ActionWithMetaCreator<T, M>
+      | Action<T>
+      | ActionWithPayloadCreator<T, P>,
     handler: Handler<S> | HandlerWithPayload<S, P>
   ) => {
     handlers[action.type as string] = handler;

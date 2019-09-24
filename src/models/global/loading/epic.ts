@@ -4,7 +4,6 @@ import { IEpic } from '@common/helpers';
 import { combineEpics } from 'redux-observable';
 import { of } from 'rxjs';
 import { catchError, concat, filter, map } from 'rxjs/operators';
-
 import * as loading from './actions';
 
 const open: IEpic<any> = action$ =>

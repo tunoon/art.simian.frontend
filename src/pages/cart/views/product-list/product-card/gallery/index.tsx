@@ -7,7 +7,7 @@ export interface IImage {
   src: string;
 }
 
- interface IProps {
+interface IProps {
   list: IImage[];
 }
 

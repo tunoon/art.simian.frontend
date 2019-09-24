@@ -4,8 +4,8 @@ import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
 import { auth } from '@models/global/auth/actions';
 import Layout from '@layout/index';
-import { Btn } from '@components';
 import { login, IParams } from '@models/global/login/actions';
+import { Btn } from '@components';
 
 import './index.less';
 

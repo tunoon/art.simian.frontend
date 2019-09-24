@@ -1,9 +1,7 @@
 import { createReducer } from '@library/redux-act';
 import produce from 'immer';
-
-import * as actions from './actions';
-
 import { IAddress } from '../../interface';
+import * as actions from './actions';
 
 export interface IState {
   list: IAddress[];

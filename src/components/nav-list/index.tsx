@@ -1,5 +1,4 @@
 import Taro, { Component } from '@tarojs/taro';
-
 import NavItem from './nav-item';
 
 interface IProps {

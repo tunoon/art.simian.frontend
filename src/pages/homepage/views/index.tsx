@@ -1,7 +1,5 @@
 import Taro, { Component, Config } from '@tarojs/taro';
-
 import Layout from '@layout/index';
-
 import Collections from './collections/index';
 import Quiz from './quiz/index';
 import ValueProp from './value-prop/index';

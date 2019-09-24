@@ -2,20 +2,16 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
-
 import Layout from '@layout/index';
-import { Btn } from '@components';
-
 import { IAddress } from '../interface';
-
-import Header from './header/index';
-import Address from './address/index';
-import Edit from './edit/index';
-
 import { load } from '../models/list/actions';
 import { create } from '../models/create/actions';
 import { update } from '../models/update/actions';
 import { omit } from '../models/omit/actions';
+import Edit from './edit/index';
+import Address from './address/index';
+import Header from './header/index';
+import { Btn } from '@components';
 
 import './index.less';
 

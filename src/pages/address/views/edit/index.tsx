@@ -1,9 +1,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Input, Picker, Button, Form } from '@tarojs/components';
+import { IAddress } from '../../interface';
 import { Iconfont } from '@components';
 import './index.less';
-
-import { IAddress } from '../../interface';
 
 type Region = [string, string, string];
 
@@ -26,10 +25,6 @@ interface IProps {
 }
 
 export default class Edit extends Component<IProps> {
-  state = {
-    region: ['', '', ''],
-    isDefault: false
-  };
   static defaultProps = {
     address: {
       name: '',
@@ -42,6 +37,11 @@ export default class Edit extends Component<IProps> {
     },
     onToggleOpenEdit: () => {},
     onCreateAddress: () => {}
+  };
+
+  state = {
+    region: ['', '', ''],
+    isDefault: false
   };
 
   componentDidMount() {
@@ -67,7 +67,7 @@ export default class Edit extends Component<IProps> {
 
     const { name, phone, detail } = e.detail.value;
     const [province, city, district] = region;
-    let address: IAddress = {
+    const address: IAddress = {
       name,
       phone,
       detail,

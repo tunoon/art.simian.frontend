@@ -9,13 +9,15 @@ import * as actions from './actions';
 const omit: IEpic<any> = (action$, state$, { api }) =>
   action$.pipe(
     ofType(actions.omit.start.type),
-    switchMap(action => from(api.address.deleteAddress(action.payload)).pipe(
+    switchMap(action =>
+      from(api.address.deleteAddress(action.payload)).pipe(
         mergeMap(() => of(actions.omit.done(), load.start()))
-      )),
+      )
+    ),
 
-    catchError((e, source$) => of(actions.omit.error(), errorActions.capture(e)).pipe(
-        concat(source$)
-      ))
+    catchError((e, source$) =>
+      of(actions.omit.error(), errorActions.capture(e)).pipe(concat(source$))
+    )
   );
 
 export const epic = combineEpics(omit);

@@ -1,6 +1,5 @@
 import { Action, Reducer } from 'redux';
 import { Epic } from 'redux-observable';
-
 import { reducer } from '@models/reducer';
 import { createClient } from '@api';
 

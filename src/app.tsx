@@ -1,9 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
-
 import { auth } from '@models/global/auth/actions';
-import { login, IParams } from '@models/global/login/actions';
-
+import { login } from '@models/global/login/actions';
 import configStore from './models';
 import Index from './pages/index';
 
@@ -23,22 +21,6 @@ class App extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
-    pages: [
-      'pages/address/views/index',
-
-      'pages/my-account/views/index',
-      'pages/cart/views/index',
-      'pages/homepage/views/index',
-      'pages/index/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  };
 
   componentDidMount() {
     Taro.getSetting().then(res => {
@@ -62,14 +44,26 @@ class App extends Component {
       });
   }
 
-  componentDidShow() {}
+  config: Config = {
+    pages: [
+      'pages/address/views/index',
 
-  componentDidHide() {}
-
-  componentDidCatchError() {}
+      'pages/my-account/views/index',
+      'pages/cart/views/index',
+      'pages/homepage/views/index',
+      'pages/index/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  };
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
+
   render() {
     return (
       <Provider store={store}>

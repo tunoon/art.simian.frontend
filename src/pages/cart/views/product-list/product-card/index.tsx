@@ -1,7 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Input } from '@tarojs/components';
 import Iconfont from '@components/iconfont/index';
-
 import Gallery, { IImage } from './gallery/index';
 import Option, { IOption } from './option/index';
 import './index.less';

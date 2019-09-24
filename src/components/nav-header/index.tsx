@@ -8,11 +8,12 @@ export default class NavHeader extends Component {
     return (
       <View className='nav-header'>
         <View className='logo'>
-          <Image className='image' src='https://cdn.shopify.com/s/files/1/0951/7126/t/768/assets/logo_240x.png?1485702' />
+          <Image
+            className='image'
+            src='https://cdn.shopify.com/s/files/1/0951/7126/t/768/assets/logo_240x.png?1485702'
+          />
         </View>
-        <View className='button'>
-          {this.props.children}
-        </View>
+        <View className='button'>{this.props.children}</View>
       </View>
     );
   }
