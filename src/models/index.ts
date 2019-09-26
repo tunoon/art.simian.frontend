@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import { createEpicMiddleware } from 'redux-observable';
-
 import { createClient } from '../api';
 import { reducer as rootReducer } from './reducer';
 import { epic } from './epic/index';
