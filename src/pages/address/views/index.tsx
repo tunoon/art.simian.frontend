@@ -2,8 +2,10 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
+import { Action, ActionWithPayload } from '@library/redux-act/createAction';
 import Layout from '@layout/index';
-import { IAddress } from '../interface';
+import { RootState } from '@models/interface';
+import { IAddress } from '../models/interface';
 import { load } from '../models/list/actions';
 import { create } from '../models/create/actions';
 import { update } from '../models/update/actions';
@@ -11,16 +13,18 @@ import { omit } from '../models/omit/actions';
 import Edit from './edit/index';
 import Address from './address/index';
 import Header from './header/index';
-import { Btn } from '@components';
+import { VButton } from '@components';
 
 import './index.less';
 
 interface IProps {
   list: IAddress[];
-  onGetAddressList: any;
-  onCreateAddress: any;
-  onUpdateAddress: any;
-  onDeleteAddress: any;
+  onGetAddressList: () => Action<string>;
+  onCreateAddress: (params: IAddress) => ActionWithPayload<string, IAddress>;
+  onUpdateAddress: (params: IAddress) => ActionWithPayload<string, IAddress>;
+  onDeleteAddress: (params: {
+    id: string;
+  }) => ActionWithPayload<string, { id: string }>;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -42,8 +46,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   )
 });
 
-const mapStateToProps = state => {
-  const list = state.pages.address.list;
+const mapStateToProps = (state: RootState) => {
+  const { list } = state.pages.address;
   return { list };
 };
 
@@ -52,9 +56,6 @@ const mapStateToProps = state => {
   mapDispatchToProps
 )
 export default class AddressList extends Component<IProps> {
-  config = {
-    navigationBarTitleText: '我的地址'
-  };
   state = {
     isOpenEdit: false
   };
@@ -62,6 +63,11 @@ export default class AddressList extends Component<IProps> {
   componentDidMount() {
     this.props.onGetAddressList();
   }
+
+  config = {
+    navigationBarTitleText: '我的地址'
+  };
+
   handleToggleOpenEdit() {
     const { isOpenEdit } = this.state;
     this.setState({ isOpenEdit: !isOpenEdit });
@@ -105,9 +111,9 @@ export default class AddressList extends Component<IProps> {
             />
           ))}
           <View className='button-wrap' onClick={this.handleToggleOpenEdit}>
-            <Btn color='#2b8df2' width={480}>
+            <VButton color='#2b8df2' width={480}>
               创建一个新地址
-            </Btn>
+            </VButton>
           </View>
           {this.state.isOpenEdit && (
             <Edit

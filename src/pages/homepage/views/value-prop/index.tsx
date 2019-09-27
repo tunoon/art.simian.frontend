@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import { Btn } from '@components';
+import { VButton } from '@components';
 
 import './index.less';
 
@@ -15,7 +15,7 @@ export default class ValueProp extends Component {
           we do it? By cutting out the middleman and passing the savings to you.
         </Text>
         <View className='button-wrap'>
-          <Btn>Find out more</Btn>
+          <VButton>Find out more</VButton>
         </View>
       </View>
     );

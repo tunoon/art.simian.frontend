@@ -2,20 +2,14 @@ import Taro, { Component } from '@tarojs/taro';
 import { Block, View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch, AnyAction } from 'redux';
-import {
-  auth as authAction,
-  IParams as AuthParams
-} from '@models/global/auth/actions';
+import { auth, IParams as AuthParams } from '@models/global/auth/actions';
 import { IState as AuthState } from '@models/global/auth/reducer';
-import {
-  login as loginAction,
-  IParams as LoginParams
-} from '@models/global/login/actions';
+import { login, IParams as LoginParams } from '@models/global/login/actions';
 import { RootState } from '@models/interface';
 import { IState as LoginState } from '@models/global/login/reducer';
 import { ActionWithPayload } from '@library/redux-act/createAction';
 import Layout from '@layout/index';
-import { Btn } from '@components';
+import { VButton } from '@components';
 
 import './index.less';
 
@@ -29,11 +23,11 @@ interface IProps {
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
   onLogin: compose(
     dispatch,
-    loginAction.start
+    login.start
   ),
   onUpdateAuth: compose(
     dispatch,
-    authAction.start
+    auth.start
   )
 });
 
@@ -76,17 +70,20 @@ export default class MyAccount extends Component<IProps> {
             <View className='title'>用户登录</View>
             {login.isLogined ? (
               <View onClick={this.handleLogin} className='button-wrap'>
-                <Btn>已登录</Btn>
+                <VButton>已登录</VButton>
               </View>
             ) : auth.userInfo ? (
               <View onClick={this.handleLogin} className='button-wrap'>
-                <Btn>微信一键登录</Btn>
+                <VButton>微信一键登录</VButton>
               </View>
             ) : (
               <View className='button-wrap'>
-                <Btn openType='getUserInfo' onUpdateAuth={this.onUpdateAuth}>
+                <VButton
+                  openType='getUserInfo'
+                  onUpdateAuth={this.onUpdateAuth}
+                >
                   微信一键登录
-                </Btn>
+                </VButton>
               </View>
             )}
           </Block>

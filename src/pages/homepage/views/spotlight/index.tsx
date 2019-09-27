@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
 import Indicator from '@components/indicator/index';
-import Btn from '@components/button/index';
+import VButton from '@components/button/index';
 import './index.less';
 
 interface IProps {
@@ -47,7 +47,9 @@ export default class Spotlight extends Component<IProps> {
               <Text className='price'>Form {item.price}</Text>
               <Text className='desc'>{item.desc}</Text>
               <View style={{ marginTop: '40rpx' }}>
-                <Btn width={630} color='#293c70'>Shop Now</Btn>
+                <VButton width={630} color='#293c70'>
+                  Shop Now
+                </VButton>
               </View>
             </SwiperItem>
           ))}

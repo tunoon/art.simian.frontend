@@ -1,27 +1,15 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Input, Picker, Button, Form } from '@tarojs/components';
-import { IAddress } from '../../interface';
+import { ITouchEvent, CommonEvent } from '@tarojs/components/types/common';
+import { IAddress } from '../../models/interface';
 import { Iconfont } from '@components';
 import './index.less';
 
-type Region = [string, string, string];
-
-interface IRegion {
-  detail: {
-    value: {
-      detail: string;
-      name: string;
-      phone: string;
-      region: Region;
-    };
-  };
-}
-
 interface IProps {
   address: IAddress;
-  onToggleOpenEdit: any;
-  onCreateAddress: any;
-  onUpdateAddress?: any;
+  onToggleOpenEdit: (event: ITouchEvent) => void;
+  onCreateAddress: (params: IAddress) => void;
+  onUpdateAddress: (params: IAddress) => void;
 }
 
 export default class Edit extends Component<IProps> {
@@ -36,7 +24,8 @@ export default class Edit extends Component<IProps> {
       isDefault: false
     },
     onToggleOpenEdit: () => {},
-    onCreateAddress: () => {}
+    onCreateAddress: () => {},
+    onUpdateAddress: () => {}
   };
 
   state = {
@@ -51,7 +40,7 @@ export default class Edit extends Component<IProps> {
     this.setState({ region: [province, city, district] });
   }
 
-  handleChangeRegion = (e: { detail: { value: Region } }) => {
+  handleChangeRegion = (e: CommonEvent) => {
     this.setState({
       region: e.detail.value
     });
@@ -61,10 +50,9 @@ export default class Edit extends Component<IProps> {
     const { isDefault } = this.state;
     this.setState({ isDefault: !isDefault });
   };
-  handleSubmit = (e: IRegion) => {
+  handleSubmit = (e: CommonEvent) => {
     const { isDefault, region } = this.state;
     const { id: addressId } = this.props.address;
-
     const { name, phone, detail } = e.detail.value;
     const [province, city, district] = region;
     const address: IAddress = {
@@ -76,7 +64,6 @@ export default class Edit extends Component<IProps> {
       district,
       isDefault
     };
-
     for (const key in address) {
       if (address.hasOwnProperty(key)) {
         let value = address[key];
@@ -93,7 +80,6 @@ export default class Edit extends Component<IProps> {
         }
       }
     }
-
     if (addressId) {
       address.id = addressId;
       this.props.onUpdateAddress(address);

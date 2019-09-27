@@ -16,14 +16,14 @@ interface IProps {
   color: string;
   width: number;
   openType?: OpenType;
-  formType?: 'submit' | 'reset';
-  onUpdateAuth?: any;
+  onUpdateAuth: () => void;
 }
 
-export default class Btn extends Component<IProps> {
+export default class VButton extends Component<IProps> {
   static defaultProps = {
     color: '#324eca',
-    width: 540
+    width: 540,
+    onUpdateAuth: () => {}
   };
   onGetUserInfo(e) {
     const { detail } = e;
@@ -32,15 +32,13 @@ export default class Btn extends Component<IProps> {
     }
   }
   render() {
-    const { width, color, openType, formType } = this.props;
-
+    const { width, color, openType } = this.props;
     return (
       <Button
         style={{ width: `${width}rpx`, backgroundColor: color }}
         className='button'
         hoverClass='hover'
         openType={openType}
-        formType={formType}
         onGetUserInfo={this.onGetUserInfo}
       >
         {this.props.children}

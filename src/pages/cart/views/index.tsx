@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Layout from '@layout/index';
-import Btn from '@components/button';
+import VButton from '@components/button';
 import Empty from './empty/index';
 import BestSeller from './best-seller/index';
 import Subtotal from './subtotal/index';
@@ -26,7 +26,7 @@ export default class Cart extends Component {
             <ProductList />
           </View>
           <View className='button-wrap'>
-            <Btn width={670}>checkout</Btn>
+            <VButton width={670}>checkout</VButton>
           </View>
         </View>
       </Layout>

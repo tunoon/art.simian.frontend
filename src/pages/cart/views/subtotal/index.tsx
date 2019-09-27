@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import Btn from '@components/button';
+import VButton from '@components/button';
 
 import './index.less';
 
@@ -20,7 +20,7 @@ export default class Subtotal extends Component {
           </View>
         </View>
         <View className='button-wrap'>
-          <Btn width={670}>checkout</Btn>
+          <VButton width={670}>checkout</VButton>
         </View>
       </View>
     );
