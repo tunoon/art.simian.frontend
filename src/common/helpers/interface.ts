@@ -9,7 +9,7 @@ export interface IDependencies {
   api: ReturnType<typeof createClient>;
 }
 
-export type IEpic<T extends Action> = Epic<T, T, void, IDependencies>;
+export type IEpic<T extends Action> = Epic<T, T, any, IDependencies>;
 
 interface IReducerMap {
   [key: string]: Reducer<any>;

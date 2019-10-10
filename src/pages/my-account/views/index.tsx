@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { Block, View } from '@tarojs/components';
+import { Block, View, Text, Navigator } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch, AnyAction } from 'redux';
 import { auth, IParams as AuthParams } from '@models/global/auth/actions';
@@ -7,8 +7,10 @@ import { IState as AuthState } from '@models/global/auth/reducer';
 import { login, IParams as LoginParams } from '@models/global/login/actions';
 import { RootState } from '@models/interface';
 import { IState as LoginState } from '@models/global/login/reducer';
-import { ActionWithPayload } from '@library/redux-act/createAction';
+import { Action, ActionWithPayload } from '@library/redux-act/createAction';
 import Layout from '@layout/index';
+import { IAddress } from '@pages/address/models/interface';
+import { load as loadAddress } from '@pages/address/models/list/actions';
 import { VButton } from '@components';
 
 import './index.less';
@@ -16,8 +18,10 @@ import './index.less';
 interface IProps {
   auth: AuthState;
   login: LoginState;
+  addressList: IAddress[];
   onLogin: (params: LoginParams) => ActionWithPayload<string, LoginParams>;
   onUpdateAuth: (params: AuthParams) => ActionWithPayload<string, AuthParams>;
+  onGetAddressList: () => Action<string>;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
@@ -28,18 +32,27 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
   onUpdateAuth: compose(
     dispatch,
     auth.start
+  ),
+  onGetAddressList: compose(
+    dispatch,
+    loadAddress.start
   )
 });
 
 const mapStateToProps = (state: RootState) => {
   const { auth, login } = state.global;
-  return { auth, login };
+  const { list } = state.pages.address;
+  return { auth, login, addressList: list };
 };
 @connect(
   mapStateToProps,
   mapDispatchToProps
 )
 export default class MyAccount extends Component<IProps> {
+  componentDidMount() {
+    this.props.onGetAddressList();
+  }
+
   config = {
     navigationBarTitleText: '我的'
   };
@@ -62,31 +75,64 @@ export default class MyAccount extends Component<IProps> {
   };
 
   render() {
-    const { auth, login } = this.props;
+    const { auth, login, addressList } = this.props;
+    const [address] = addressList;
+    const logined = (
+      <Block>
+        <View className='title'>我的账号</View>
+        <View className='order'>
+          <View className='header'>订单历史</View>
+          <Text className='text'>您还没有任何订单</Text>
+        </View>
+        <View className='wrap'>
+          <View className='header'>账户详情</View>
+          <View className='nickname'>{login.wechatNickname}</View>
+          {addressList.length && (
+            <View className='address'>
+              {address.isDefault && (
+                <Text className='text default'>默认地址</Text>
+              )}
+              <Text className='text region'>{`${address.province} ${address.city} ${address.district}`}</Text>
+              <Text className='text detail'>{address.detail}</Text>
+              <Text className='text phone'>{address.phone}</Text>
+            </View>
+          )}
+          <Navigator
+            url='/pages/address/views/index'
+            className='text navigator'
+          >
+            查看地址({addressList.length})
+          </Navigator>
+        </View>
+      </Block>
+    );
+    const authorized = (
+      <Block>
+        <View className='title'>用户登录</View>
+        <View onClick={this.handleLogin} className='button-wrap'>
+          <VButton>微信一键登录</VButton>
+        </View>
+      </Block>
+    );
+    const unauthorized = (
+      <Block>
+        <View className='title'>用户登录</View>
+        <View className='button-wrap'>
+          <VButton openType='getUserInfo' onUpdateAuth={this.onUpdateAuth}>
+            微信一键登录
+          </VButton>
+        </View>
+      </Block>
+    );
+
     return (
       <Layout>
         <View className='my'>
-          <Block>
-            <View className='title'>用户登录</View>
-            {login.isLogined ? (
-              <View onClick={this.handleLogin} className='button-wrap'>
-                <VButton>已登录</VButton>
-              </View>
-            ) : auth.userInfo ? (
-              <View onClick={this.handleLogin} className='button-wrap'>
-                <VButton>微信一键登录</VButton>
-              </View>
-            ) : (
-              <View className='button-wrap'>
-                <VButton
-                  openType='getUserInfo'
-                  onUpdateAuth={this.onUpdateAuth}
-                >
-                  微信一键登录
-                </VButton>
-              </View>
-            )}
-          </Block>
+          {login.isLogined
+            ? logined
+            : auth.userInfo
+            ? authorized
+            : unauthorized}
         </View>
       </Layout>
     );

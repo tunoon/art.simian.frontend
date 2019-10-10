@@ -19,7 +19,7 @@ export class Address {
   }
 
   getAddressList = () =>
-    this.request.get(`${this.prefix}/all`, {}) as Promise<any>;
+    this.request.get(`${this.prefix}/get/all`, {}) as Promise<any>;
 
   createAddress = (params: IAddress) =>
     this.request.post(`${this.prefix}/create`, {

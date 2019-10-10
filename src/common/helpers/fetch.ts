@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro';
+import { HttpStatus } from './http-status.enum';
 
 const domain = 'http://localhost:3000';
 
@@ -109,6 +110,13 @@ export class Fetch {
           if (statusCode < 400 && statusCode >= 200) {
             resolve(data);
           } else {
+            if (statusCode === HttpStatus.FORBIDDEN) {
+              Taro.setStorageSync('[global.login]', {
+                isLogined: false,
+                token: ''
+              });
+              console.log('need login');
+            }
             reject({
               code: statusCode,
               message: data

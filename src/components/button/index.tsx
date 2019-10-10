@@ -21,7 +21,7 @@ interface IProps {
 
 export default class VButton extends Component<IProps> {
   static defaultProps = {
-    color: '#324eca',
+    color: '#2b8df2',
     width: 540,
     onUpdateAuth: () => {}
   };
