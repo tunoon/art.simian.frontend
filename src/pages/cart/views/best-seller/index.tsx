@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image, Swiper, SwiperItem } from '@tarojs/components';
-import Indicator from '@components/indicator/index';
+import { Indicator } from '@components';
 
 import './index.less';
 

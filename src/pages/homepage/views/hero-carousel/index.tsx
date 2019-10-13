@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
-import list from './data';
+import list from './mock';
 import { VButton } from '@components';
 
 import './index.less';

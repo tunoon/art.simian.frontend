@@ -46,6 +46,7 @@ class App extends Component {
 
   config: Config = {
     pages: [
+      'pages/product-detail/views/index',
       'pages/my-account/views/index',
       'pages/homepage/views/index',
       'pages/address/views/index',

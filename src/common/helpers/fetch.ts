@@ -130,6 +130,11 @@ export class Fetch {
           statusCode: number;
           errMsg: string;
         }) => {
+          Taro.setStorageSync('[global.login]', {
+            isLogined: false,
+            token: ''
+          });
+          console.log('need login');
           reject({
             code: statusCode,
             message: errMsg

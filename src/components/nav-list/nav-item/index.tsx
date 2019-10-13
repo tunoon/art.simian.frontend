@@ -1,9 +1,16 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { Navigator } from '@tarojs/components';
 import './index.less';
 
-export default class NavItem extends Component {
+interface IProps {
+  url: string;
+}
+export default class NavItem extends Component<IProps> {
   render() {
-    return <View className='nav-item'>{this.props.children}</View>;
+    return (
+      <Navigator url={this.props.url} hoverClass='hover' className='nav-item'>
+        {this.props.children}
+      </Navigator>
+    );
   }
 }

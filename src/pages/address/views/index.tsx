@@ -3,7 +3,6 @@ import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { compose, Dispatch } from 'redux';
 import { Action, ActionWithPayload } from '@library/redux-act/createAction';
-import Layout from '@layout/index';
 import { RootState } from '@models/interface';
 import { IAddress } from '../models/interface';
 import { load } from '../models/list/actions';
@@ -13,6 +12,7 @@ import { omit } from '../models/omit/actions';
 import Edit from './edit/index';
 import Address from './address/index';
 import Header from './header/index';
+import { Layout } from '@layout';
 import { VButton } from '@components';
 
 import './index.less';

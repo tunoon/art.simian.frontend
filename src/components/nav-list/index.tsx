@@ -1,30 +1,38 @@
 import Taro, { Component } from '@tarojs/taro';
+import { path } from '@common/helpers';
 import NavItem from './nav-item';
 
 interface IProps {
-  list: string[];
+  list: {
+    name: string;
+    url: string;
+  }[];
 }
 
 export default class NavList extends Component<IProps> {
   static defaultProps = {
     list: [
-      'Get started',
-      'Best sellers',
-      'Sheets',
-      'Towels',
-      'Loungewear',
-      'Comforters',
-      'Pillows',
-      'Brooklittles',
-      'Blankets',
-      'Accessories',
-      'Last Call',
-      'About',
-      'My Account',
-      'Search'
+      { name: 'Get started', url: '' },
+      { name: 'Best sellers', url: '' },
+      { name: 'Sheets', url: '' },
+      { name: 'Towels', url: '' },
+      { name: 'Loungewear', url: '' },
+      { name: 'Comforters', url: '' },
+      { name: 'Pillows', url: '' },
+      { name: 'Brooklittles', url: '' },
+      { name: 'Blankets', url: '' },
+      { name: 'Accessories', url: '' },
+      { name: 'Last Call', url: '' },
+      { name: 'About', url: '' },
+      { name: 'My Account', url: path.myAccount },
+      { name: 'Search', url: '' }
     ]
   };
   render() {
-    return this.props.list.map(item => <NavItem key={item}>{item}</NavItem>);
+    return this.props.list.map(item => (
+      <NavItem key={item.name} url={item.url}>
+        {item.name}
+      </NavItem>
+    ));
   }
 }

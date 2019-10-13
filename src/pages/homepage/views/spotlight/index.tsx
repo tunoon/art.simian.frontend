@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
-import Indicator from '@components/indicator/index';
-import VButton from '@components/button/index';
+import { Indicator, VButton } from '@components';
+
 import './index.less';
 
 interface IProps {

@@ -8,9 +8,9 @@ import { login, IParams as LoginParams } from '@models/global/login/actions';
 import { RootState } from '@models/interface';
 import { IState as LoginState } from '@models/global/login/reducer';
 import { Action, ActionWithPayload } from '@library/redux-act/createAction';
-import Layout from '@layout/index';
 import { IAddress } from '@pages/address/models/interface';
 import { load as loadAddress } from '@pages/address/models/list/actions';
+import { Layout } from '@layout';
 import { VButton } from '@components';
 
 import './index.less';
@@ -56,7 +56,16 @@ export default class MyAccount extends Component<IProps> {
   config = {
     navigationBarTitleText: '我的'
   };
-
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target);
+    }
+    return {
+      title: '自定义转发标题',
+      path: 'pages/my-account/views/index'
+    };
+  }
   handleLogin = () => {
     Taro.login().then(res => {
       const { code } = res;

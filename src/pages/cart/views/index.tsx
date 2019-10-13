@@ -1,11 +1,11 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import Layout from '@layout/index';
 import VButton from '@components/button';
 import Empty from './empty/index';
 import BestSeller from './best-seller/index';
 import Subtotal from './subtotal/index';
 import ProductList from './product-list/index';
+import { Layout } from '@layout';
 
 import './index.less';
 
