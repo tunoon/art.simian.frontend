@@ -6,7 +6,7 @@ interface IProps {
   name: string;
   size: number;
   color: string;
-  onToggleDrawer: Function;
+  onToggleDrawer: (name: string) => void;
 }
 
 export default class Iconfont extends Component<IProps> {

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-commonjs
 const path = require('path');
 
 const SRC_PATH = path.resolve(__dirname, '../src');

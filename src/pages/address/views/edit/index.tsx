@@ -99,11 +99,11 @@ export default class Edit extends Component<IProps> {
           <Text className='title'>添加新地址</Text>
           <View className='input-wrap'>
             <Text className='label'>收货人</Text>
-            <Input className='input' value={name} name='name'></Input>
+            <Input className='input' value={name} name='name' />
           </View>
           <View className='input-wrap'>
             <Text className='label'>手机号码</Text>
-            <Input className='input' value={phone} name='phone'></Input>
+            <Input className='input' value={phone} name='phone' />
           </View>
           <Picker
             mode='region'
@@ -118,7 +118,7 @@ export default class Edit extends Component<IProps> {
           </Picker>
           <View className='input-wrap'>
             <Text className='label'>详细地址</Text>
-            <Input className='input' value={detail} name='detail'></Input>
+            <Input className='input' value={detail} name='detail' />
           </View>
           <View className='is-default' onClick={this.handleToggleDefault}>
             <Text className='text'>设为默认</Text>
@@ -126,7 +126,7 @@ export default class Edit extends Component<IProps> {
               name='check-circle-o'
               size={36}
               color={isDefault ? '#2b8df2' : '#e5e5e5'}
-            ></Iconfont>
+            />
           </View>
           <View className='complete'>
             <Button className='button' hoverClass='hover' formType='submit'>

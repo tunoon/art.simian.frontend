@@ -4,6 +4,8 @@
   "private": true,
   "description": "art.simian wechat mini app",
   "scripts": {
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "fix": "eslint --fix 'src/**/*.{ts,tsx}'",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",

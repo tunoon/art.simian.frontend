@@ -33,14 +33,13 @@ export default class Address extends Component<IProps> {
           <Text className='edit' onClick={this.handleToggleOpenEdit}>
             编辑
           </Text>
-          <View className='line'></View>
+          <View className='line' />
           <Text
             className='delete'
             onClick={this.props.onDeleteAddress.bind(this, address.id)}
           >
             删除
           </Text>
-          <View></View>
         </View>
         {this.state.isOpenEdit && (
           <Edit

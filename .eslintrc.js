@@ -28,7 +28,15 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     'import/no-named-as-default': 'off',
     'import/order': 'error',
-    'import/first': 'off'
+    'import/first': 'off',
+    'jsx-quotes': ['error', 'prefer-single'],
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: true
+      }
+    ]
   },
   parser: '@typescript-eslint/parser',
   plugins: ['typescript', '@typescript-eslint']

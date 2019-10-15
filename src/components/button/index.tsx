@@ -12,6 +12,7 @@ type OpenType =
   | 'openSetting'
   | 'feedback'
   | 'getRealnameAuthInfo';
+
 interface IProps {
   color: string;
   width: number;

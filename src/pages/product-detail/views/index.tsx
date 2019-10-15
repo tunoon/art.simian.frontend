@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Gallery from './gallery/index';
 import * as productDetail from './mock';
+// import Modal from './modal/index';
 import { Layout } from '@layout';
 
 export default class ProductDetail extends Component {
@@ -14,6 +15,7 @@ export default class ProductDetail extends Component {
   render() {
     return (
       <Layout>
+        {/* <Modal>哈哈哈</Modal> */}
         <View className='product-detail'>
           <View className='basic'>
             <Gallery list={productDetail.gallery} />
