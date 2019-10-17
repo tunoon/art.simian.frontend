@@ -2,13 +2,13 @@ import Taro, { PureComponent } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { Iconfont } from '@components';
 
-class Modal extends PureComponent {
+export default class Modal extends PureComponent {
   state = {};
 
   render() {
     return (
       <View className='modal'>
-        <View className='background' />
+        <View className='shade' />
         <View className='detail'>
           <View className='switch'>
             <Iconfont name='close' color='#bababa' />
@@ -19,4 +19,3 @@ class Modal extends PureComponent {
     );
   }
 }
-export default Modal;
