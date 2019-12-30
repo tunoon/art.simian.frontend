@@ -1,15 +1,15 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import { IAddress } from '../../interface';
-import Edit from '../edit/index';
+import { IAddress } from '@pages/address/models';
+import Edit, { EditAddress } from '../edit/index';
 
 import './index.less';
 
 interface IProps {
   address: IAddress;
-  onCreateAddress: any;
-  onDeleteAddress: any;
-  onUpdateAddress: any;
+  onCreateAddress: EditAddress;
+  onDeleteAddress: EditAddress;
+  onUpdateAddress: EditAddress;
 }
 
 export default class Address extends Component<IProps> {

@@ -8,7 +8,7 @@ import { login, IParams as LoginParams } from '@models/global/login/actions';
 import { RootState } from '@models/interface';
 import { IState as LoginState } from '@models/global/login/reducer';
 import { Action, ActionWithPayload } from '@library/redux-act/createAction';
-import { IAddress } from '@pages/address/models/interface';
+import { IAddress } from '@pages/address/models';
 import { load as loadAddress } from '@pages/address/models/list/actions';
 import { Layout } from '@layout';
 import { VButton } from '@components';

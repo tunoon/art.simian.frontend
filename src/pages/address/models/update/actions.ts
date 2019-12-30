@@ -1,5 +1,5 @@
 import { createAction } from '@library/redux-act';
-import { IAddress } from '../interface';
+import { IAddress } from '@pages/address/models';
 
 const path = 'pages/address/update';
 

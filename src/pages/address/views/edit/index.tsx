@@ -1,17 +1,21 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Input, Picker, Button, Form } from '@tarojs/components';
 import { ITouchEvent, CommonEvent } from '@tarojs/components/types/common';
-import { IAddress } from '../../models/interface';
+import { IAddress } from '@pages/address/models';
+import { ActionWithPayload } from '@library/redux-act/createAction';
 import { Iconfont } from '@components';
 import './index.less';
 
+export type EditAddress = (
+  params: IAddress
+) => ActionWithPayload<string, IAddress>;
 interface IProps {
   address: IAddress;
   onToggleOpenEdit: (event: ITouchEvent) => void;
-  onCreateAddress: (params: IAddress) => void;
-  onUpdateAddress: (params: IAddress) => void;
+  onCreateAddress: EditAddress;
+  onUpdateAddress: EditAddress;
 }
-
+// (params: AuthParams) => ActionWithPayload<string, AuthParams>
 export default class Edit extends Component<IProps> {
   static defaultProps = {
     address: {
